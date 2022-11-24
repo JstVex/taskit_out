@@ -1,25 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CgCalendarDue } from 'react-icons/cg'
 import { BiSortAlt2 } from "react-icons/bi"
 import InfiniteScroll from "react-infinite-scroll-component";
 import DuedTask from "../components/DuedTask";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Dued = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+    const rootUrl = process.env.REACT_APP_API_BASE_URL;
+    const { user } = useAuthContext();
 
+    const [duedTasks, setDuedTasks] = useState([])
 
     const fetchPlannedTasks = async () => {
-        const rootUrl = process.env.REACT_APP_API_BASE_URL;
-        const response = await fetch(`${rootUrl}/api/tasks/planned`);
+        const response = await fetch(`${rootUrl}/api/tasks/planned`, {
+            headers: { 'Authorization': `Bearer ${user.token}` }
+        });
         const json = await response.json();
 
         if (response.ok) {
-            setTasks(json);
+            setDuedTasks(json);
         }
     }
+
+
+
     useEffect(() => {
-        fetchPlannedTasks()
-    }, [fetchPlannedTasks])
+        if (user) {
+            fetchPlannedTasks()
+        }
+    }, [fetchPlannedTasks, user])
+
     return (
         <InfiniteScroll
             dataLength={tasks}
@@ -42,7 +53,7 @@ const Dued = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarre
                         <h4 className="sort-title">Sort</h4>
                     </div>
                 </div>
-                {tasks && tasks.map((task) => {
+                {duedTasks && duedTasks.map((task) => {
                     return <DuedTask task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}
             </div>

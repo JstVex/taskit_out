@@ -11,6 +11,7 @@ const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, hand
     const handleShow = () => {
         setToggle(!toggle)
     }
+
     return (
         <div className="taskdetails-container">
             <div className="task-layers">

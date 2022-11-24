@@ -2,7 +2,8 @@ import { BsSun, BsTrash } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import date from 'date-and-time'
+import date from 'date-and-time';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,7 +11,9 @@ const Edit = ({ task, handleDelete }) => {
     const [startDate, setStartDate] = useState(new Date());
     const [note, setNote] = useState(task.note);
     const [error, setError] = useState(null);
-    const [updateTask, setUpdateTask] = useState(task.task)
+    const [updateTask, setUpdateTask] = useState(task.task);
+
+    const { user } = useAuthContext();
 
     // const todayDate = new Date();
 
@@ -23,7 +26,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ note: note }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -45,7 +49,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ extra: "my day" }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -67,7 +72,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ extra: "" }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -89,7 +95,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ task: updateTask }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -110,7 +117,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ planned: startDate.toDateString() }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -132,7 +140,8 @@ const Edit = ({ task, handleDelete }) => {
             method: 'PATCH',
             body: JSON.stringify({ planned: "" }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
@@ -149,7 +158,7 @@ const Edit = ({ task, handleDelete }) => {
 
 
     return (
-        <div className="edit-container">
+        <div className="edit-container" >
             <div className="myday-button box1" onClick={task.extra ? (e) => removeMyday(e, task._id) : (e) => handleMydaySubmit(e, task._id)}>
                 <BsSun />
                 {task.extra ? <p className="edit-text">remove from my day</p> : <p className="edit-text">add to my day ^^</p>}

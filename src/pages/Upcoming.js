@@ -5,24 +5,31 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import date from 'date-and-time'
 import DuedTask from "../components/DuedTask";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Upcoming = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const todayDate = new Date();
     let formattedDate = date.format(todayDate, 'ddd MMM DD YYYY');
-
+    const rootUrl = process.env.REACT_APP_API_BASE_URL;
+    const { user } = useAuthContext();
 
     const fetchPlannedTasks = async () => {
-        const rootUrl = process.env.REACT_APP_API_BASE_URL;
-        const response = await fetch(`${rootUrl}/api/tasks/planned`);
+        const response = await fetch(`${rootUrl}/api/tasks/planned`, {
+            headers: { 'Authorization': `Bearer ${user.token}` }
+        });
         const json = await response.json();
 
         if (response.ok) {
             setTasks(json);
         }
     }
+
     useEffect(() => {
-        fetchPlannedTasks()
-    }, [fetchPlannedTasks])
+        if (user) {
+            fetchPlannedTasks()
+        }
+    }, [fetchPlannedTasks, user])
+
     return (
         <InfiniteScroll
             dataLength={tasks}

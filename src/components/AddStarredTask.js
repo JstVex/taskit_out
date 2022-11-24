@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa'
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const AddStarredTask = () => {
     const [task, setTask] = useState('');
@@ -9,6 +10,7 @@ const AddStarredTask = () => {
     const [note, setNote] = useState("");
     const [error, setError] = useState(null);
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
+    const { user } = useAuthContext();
 
 
     const handleSubmit = async (e) => {
@@ -19,7 +21,8 @@ const AddStarredTask = () => {
             method: 'POST',
             body: JSON.stringify(tasky),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

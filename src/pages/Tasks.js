@@ -1,17 +1,21 @@
 import { useEffect } from "react";
-import { BsHouseDoor } from "react-icons/bs"
-import { BiSortAlt2 } from "react-icons/bi"
+// import { BiSortAlt2 } from "react-icons/bi"
 import { GiHollowCat } from "react-icons/gi"
 import Task from "../components/Task";
 import AddTask from "../components/AddTask";
 import SearchTask from "../components/SearchTask"
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useAuthContext } from "../hooks/useAuthContext"
 
 
 const Tasks = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete, search, setSearch }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
+    const { user } = useAuthContext();
+
     const fetchTasks = async () => {
-        const response = await fetch(`${rootUrl}/api/tasks`);
+        const response = await fetch(`${rootUrl}/api/tasks`, {
+            headers: { 'Authorization': `Bearer ${user.token}` }
+        });
         const json = await response.json();
 
         if (response.ok) {
@@ -20,8 +24,10 @@ const Tasks = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarr
     }
 
     useEffect(() => {
-        fetchTasks()
-    }, [fetchTasks])
+        if (user) {
+            fetchTasks()
+        }
+    }, [fetchTasks, user])
 
     return (
         <InfiniteScroll
@@ -36,9 +42,12 @@ const Tasks = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarr
                         <h4 className="title-heading">tasks</h4>
                     </div>
                     <SearchTask search={search} setSearch={setSearch} />
-                    <div className="iconandtext">
+                    {/* <div className="iconandtext">
                         <BiSortAlt2 className="title-icon2" />
                         <h4 className="sort-title">Sort</h4>
+                    </div> */}
+                    <div className="count">
+
                     </div>
                 </div>
                 <AddTask />

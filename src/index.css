@@ -107,6 +107,11 @@ body {
   color: #fff;
 }
 
+.app-name {
+  color: #a1133b;
+  font-weight: 300;
+}
+
 .logo,
 .settings {
   display: flex;
@@ -116,8 +121,9 @@ body {
 
 .topicon {
   margin-left: 15px;
-  margin-right: 20px;
+  margin-right: 12px;
   font-size: 20px;
+  color: #a1133b;
 }
 
 .settings p {
@@ -163,7 +169,94 @@ body {
   text-align: center;
 }
 
+/* auth forms */
+.auth-container {
+  float: right;
+  width: 75%;
+}
 
+form.signup,
+form.login {
+  width: 450px;
+  margin-top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.auth-form {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.auth-form:focus {
+  outline: none;
+  border-color: #fb6a8c;
+}
+
+.auth-label,
+.auth-form {
+  display: block;
+}
+
+.auth-btn {
+  background-color: #fff;
+  border: 1px solid #fb6a8c;
+  color: #fb6a8c;
+  padding: 10px 15px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+}
+
+.auth-btn:hover {
+  background-color: #fb6a8c;
+  color: #fff;
+}
+
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid #ab2b5e;
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+.logout-btn {
+  background: #fe7f9c;
+  color: #fff;
+  border: 1px solid #e12b56;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin: 0px 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.logout-btn:hover {
+  background-color: #e12b56;
+}
+
+.login-link,
+.signup-link {
+  margin: 0px 5px;
+  color: #fff;
+}
+
+.signup-link {
+  margin-right: 10px;
+}
 
 /* .seperator { */
 /* display: grid;
@@ -182,7 +275,39 @@ body {
   margin-left: 20px;
   height: 90vh;
   overflow: 'auto';
+}
 
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  height: 90vh;
+  line-height: 30%;
+}
+
+.home-title,
+.home-subtitle,
+.home-text,
+.home-footer {
+  font-weight: 300;
+}
+
+.home-title {
+  font-size: 2.2rem;
+}
+
+.home-subtitle {
+  font-size: 1.6rem;
+}
+
+.home-text {
+  font-size: 1.2rem;
+}
+
+.home-footer {
+  font-size: 1rem;
 }
 
 .title {

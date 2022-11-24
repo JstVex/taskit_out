@@ -8,14 +8,25 @@ import { SlCalender } from "react-icons/sl";
 
 const DuedTask = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const todayDate = new Date();
-    let formattedTodayDate = date.format(todayDate, 'YYYY-MM-DD');
-    let formattedPlannedDate = date.parse(task.planned, 'ddd, MMM DD YYYY');
+    let formattedTodayDate = date.format(todayDate, 'DD-MM-YYYY');
+    // let formattedPlannedDate = date.parse(task.planned, 'ddd, MMM DD YYYY');
     // console.log(formattedTodayDate)
     // console.log(formattedPlannedDate)
+    const getTodayDate = parseInt(formattedTodayDate.substring(0, 2));
+    const getDate = parseInt(task.planned.substring(10, 8));
+    // console.log(getDate)
+    // console.log(getTodayDate)
     const [toggle, setToggle] = useState(false)
     const handleShow = () => {
         setToggle(!toggle)
     }
+
+    // const [show, setShow] = useState(true)
+
+    // if (getDate >= getTodayDate) {
+    //     setShow(false)
+    // }
+
     return (
         <div className="taskdetails-container">
             <div className="task-layers">

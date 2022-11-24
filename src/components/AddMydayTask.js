@@ -2,25 +2,19 @@ import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa'
 import { useAuthContext } from "../hooks/useAuthContext";
 
-const AddTask = () => {
+const AddMydayTask = () => {
     const [task, setTask] = useState('');
     const [checked, setChecked] = useState(false);
     const [starred, setStarred] = useState(false);
-    const [extra, setExtra] = useState("");
+    const [extra, setExtra] = useState("my day");
     const [note, setNote] = useState("");
     const [error, setError] = useState(null);
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
-
     const { user } = useAuthContext();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (!user) {
-            setError('you must be logged in:(')
-            return
-        }
-
         const tasky = { task, checked, starred, note, extra }
 
         const response = await fetch(`${rootUrl}/api/tasks`, {
@@ -42,6 +36,7 @@ const AddTask = () => {
             setTask('')
             console.log('new task added', json)
         }
+
     }
     return (
         <div className="addform-container">
@@ -68,4 +63,4 @@ const AddTask = () => {
     );
 }
 
-export default AddTask;
+export default AddMydayTask;
