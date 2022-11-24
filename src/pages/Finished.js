@@ -61,7 +61,7 @@ const Finished = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleSt
                 <div className="title">
                     <div className="iconandtext">
                         <HiOutlineSparkles className="title-icon1" />
-                        <h4 className="title-heading">Finished</h4>
+                        <h4 className="title-heading">finished</h4>
                     </div>
                     <button className="all-delete-button" onClick={() => handleDeleteAllFinished()}>
                         <p>delete all</p>

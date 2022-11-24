@@ -39,7 +39,7 @@ const Important = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleS
                 <div className="title">
                     <div className="iconandtext">
                         <BsStar className="title-icon1" />
-                        <h4 className="title-heading">Important</h4>
+                        <h4 className="title-heading">important</h4>
                     </div>
                     {/* <div className="iconandtext">
                         <BiSortAlt2 className="title-icon2" />
