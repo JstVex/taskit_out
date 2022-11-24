@@ -224,11 +224,12 @@ form.login {
 
 div.error {
   padding: 10px;
-  background: #ffefef;
+  background: #ffecf3;
   border: 1px solid #ab2b5e;
-  color: var(--error);
+  color: #000;
   border-radius: 4px;
   margin: 20px 0;
+  text-align: center;
 }
 
 .logout-btn {
