@@ -1,13 +1,14 @@
 import { BsSun, BsTrash } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import DatePicker from "react-datepicker";
 import date from 'date-and-time';
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useRef, useImperativeHandle } from "react";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
-const Edit = ({ task, handleDelete }) => {
+const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
     const [startDate, setStartDate] = useState(new Date());
     const [note, setNote] = useState(task.note);
     const [error, setError] = useState(null);
@@ -15,12 +16,19 @@ const Edit = ({ task, handleDelete }) => {
 
     const { user } = useAuthContext();
 
+    useImperativeHandle(noteRef, () => ({
+        focusNote() {
+            noteRef.current.focus();
+        }
+    }))
+
+
     // const todayDate = new Date();
 
     // const [mydayText, setMydayText] = useState('');
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
-    const handleNoteSubmit = async (e, id) => {
-        e.preventDefault();
+    const handleNoteChange = async (e, id) => {
+        // e.preventDefault();
 
         const response = await fetch(`${rootUrl}/api/tasks/${id}`, {
             method: 'PATCH',
@@ -170,7 +178,7 @@ const Edit = ({ task, handleDelete }) => {
                 {task.planned ? <p className="edit-text" onClick={(e) => removeDate(e, task._id)}>remove due date</p> : <p className="edit-text" onClick={(e) => addDate(e, task._id)}>add due date ^^</p>}
                 <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
-            <div className="note-space box3">
+            {/* <div className="note-space box3">
                 <form className="noteform" onSubmit={(e) => handleNoteSubmit(e, task._id)}>
                     <label htmlFor="addNote">Add note</label>
                     <input
@@ -183,6 +191,22 @@ const Edit = ({ task, handleDelete }) => {
                         onChange={(e) => setNote(e.target.value)}
                     />
                 </form>
+            </div> */}
+            <div className="note-space box3" >
+                <div className="noteform" onChange={(e) => handleNoteChange(e, task._id)}>
+                    <label htmlFor="addNote">Add note</label>
+                    <textarea
+                        ref={noteRef}
+                        className="textarea"
+                        autoFocus
+                        id="addNote"
+                        type="text"
+                        placeholder="note note here ^^"
+                        required
+                        value={note}
+                        onChange={(e) => setNote(e.target.value)}
+                    />
+                </div>
             </div>
             <div className="task-space box4">
                 <form className="taskform" onSubmit={(e) => updateTaskSubmit(e, task._id)}>
@@ -204,6 +228,6 @@ const Edit = ({ task, handleDelete }) => {
 
         </div>
     );
-}
+})
 
 export default Edit;
