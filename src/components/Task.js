@@ -20,7 +20,7 @@ const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, hand
 
     const combineFunc = () => {
         handleShow();
-        // noteRef.current.focusNote();
+        noteRef.current.focusNote();
     }
 
     return (

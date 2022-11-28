@@ -233,7 +233,8 @@ div.error {
   text-align: center;
 }
 
-.logout-btn {
+.logout-btn,
+.done-btn {
   background: #fe7f9c;
   color: #fff;
   border: 1px solid #e12b56;
@@ -246,9 +247,12 @@ div.error {
   font-family: 'Roboto', sans-serif;
 }
 
-.logout-btn:hover {
+.logout-btn:hover,
+.done-btn:hover {
   background-color: #e12b56;
 }
+
+
 
 .login-link,
 .signup-link {
@@ -550,6 +554,7 @@ input[type=checkbox] {
   padding-bottom: 0px;
   width: 100%;
   height: 100%;
+  font-size: 0.95rem;
 }
 
 .note-icon {

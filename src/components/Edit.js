@@ -1,10 +1,9 @@
 import { BsSun, BsTrash } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
-import { forwardRef, useState } from "react";
+import { forwardRef, useState, useRef, useImperativeHandle } from "react";
 import DatePicker from "react-datepicker";
 import date from 'date-and-time';
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useRef, useImperativeHandle } from "react";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
@@ -15,10 +14,11 @@ const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
     const [updateTask, setUpdateTask] = useState(task.task);
 
     const { user } = useAuthContext();
+    const noteChildRef = useRef();
 
     useImperativeHandle(noteRef, () => ({
         focusNote() {
-            noteRef.current.focus();
+            noteChildRef.current.focus();
         }
     }))
 
@@ -196,9 +196,8 @@ const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
                 <div className="noteform" onChange={(e) => handleNoteChange(e, task._id)}>
                     <label htmlFor="addNote">Add note</label>
                     <textarea
-                        ref={noteRef}
+                        ref={noteChildRef}
                         className="textarea"
-                        autoFocus
                         id="addNote"
                         type="text"
                         placeholder="note note here ^^"
@@ -223,6 +222,7 @@ const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
 
             </div>
             <div className="box5">
+                <button className="done-btn">done</button>
                 <BsTrash className="trash" onClick={() => handleDelete(task._id)} />
             </div>
 
