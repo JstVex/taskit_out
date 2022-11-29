@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
-const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
+const Edit = forwardRef(({ task, handleDelete, handleShow }, noteRef) => {
     const [startDate, setStartDate] = useState(new Date());
     const [note, setNote] = useState(task.note);
     const [error, setError] = useState(null);
@@ -201,6 +201,8 @@ const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
                         id="addNote"
                         type="text"
                         placeholder="note note here ^^"
+                        autoCorrect="off"
+                        spellCheck="false"
                         required
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
@@ -222,7 +224,7 @@ const Edit = forwardRef(({ task, handleDelete }, noteRef) => {
 
             </div>
             <div className="box5">
-                <button className="done-btn">done</button>
+                <button className="done-btn" onClick={handleShow}>done</button>
                 <BsTrash className="trash" onClick={() => handleDelete(task._id)} />
             </div>
 

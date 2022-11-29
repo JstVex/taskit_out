@@ -49,6 +49,7 @@ const AddMydayTask = () => {
                 </button>
                 <label htmlFor="addTask">Add task</label>
                 <input
+                    spellCheck="false"
                     autoFocus
                     id="addTask"
                     type="text"
