@@ -23,6 +23,7 @@ const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, hand
         noteRef.current.focusNote();
     }
 
+
     return (
         <div className="taskdetails-container">
             <div className="task-layers">
@@ -51,8 +52,8 @@ const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, hand
                 </div>
 
             </div>
-            <div className="fortoggle" style={toggle ? { display: 'block' } : null}>
-                <Edit task={task} handleDelete={handleDelete} noteRef={noteRef} />
+            <div className="fortoggle" style={toggle ? { display: 'block', animationName: 'appear', animationDelay: '2s' } : null}>
+                <Edit task={task} handleDelete={handleDelete} noteRef={noteRef} handleShow={handleShow} />
             </div>
         </div>
     );

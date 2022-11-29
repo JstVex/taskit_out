@@ -567,9 +567,23 @@ input[type=checkbox] {
   margin-right: 10px;
 }
 
+@keyframes appear {
+  from {
+    display: none;
+  }
+
+  to {
+    display: block;
+  }
+}
+
 .fortoggle {
   display: none;
+  /* animation-name: appear;
+  animation-duration: 2s; */
 }
+
+
 
 .box3 {
   grid-column-start: 1;
