@@ -5,10 +5,11 @@ import Task from "../components/Task";
 import AddTask from "../components/AddTask";
 import SearchTask from "../components/SearchTask"
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useAuthContext } from "../hooks/useAuthContext"
+import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
 
-const Tasks = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete, search, setSearch }) => {
+const Tasks = ({ tasks, setTasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete, search, setSearch }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
 
@@ -38,6 +39,7 @@ const Tasks = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarr
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <GiHollowCat className="title-icon1" />
                         <h4 className="title-heading">tasks</h4>
                     </div>

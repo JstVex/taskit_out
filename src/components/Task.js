@@ -6,7 +6,6 @@ import { CiStickyNote } from "react-icons/ci"
 import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
-
 const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [toggle, setToggle] = useState(false);
     const handleShow = () => {

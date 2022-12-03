@@ -5,9 +5,10 @@ import Task from "../components/Task";
 import AddStarredTask from "../components/AddStarredTask";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
 
-const Important = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Important = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
     const [importantTasks, setImportantTasks] = useState([])
@@ -38,6 +39,7 @@ const Important = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleS
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <BsStar className="title-icon1" />
                         <h4 className="title-heading">important</h4>
                     </div>

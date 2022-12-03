@@ -10,8 +10,6 @@ body {
   height: 100vh;
 }
 
-
-
 /* navbar */
 .navbar-container {
   height: 93vh;
@@ -25,12 +23,37 @@ body {
   float: left;
 }
 
+.navbar-toggle-icon2 {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  font-size: 1.3rem;
+  color: #a72f51;
+  cursor: pointer;
+}
+
+.navbar-toggle-icon3 {
+  /* float: right;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: 30px; */
+  font-size: 1.3rem;
+  color: #a72f51;
+  cursor: pointer;
+}
+
+.navbar-toggle-icon {
+  font-size: 1.2rem;
+  color: #a72f51;
+  cursor: pointer;
+}
 
 .links {
   height: 50%;
   display: flex;
   flex-direction: column;
-  align-items: left;
   justify-content: center;
 }
 
@@ -38,8 +61,6 @@ body {
   color: #000;
   text-decoration: none;
   font-size: 15px;
-  /* grid-template-columns: 1fr 3fr;
-  gap: 100px; */
 }
 
 .linkcontainer {
@@ -100,11 +121,13 @@ body {
 
 /* top nav bar */
 .topnavbar-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #fe7f9c;
   color: #fff;
+  height: 7vh;
 }
 
 .app-name {
@@ -131,33 +154,6 @@ body {
   margin-right: 15px;
 }
 
-.searchForm {
-  width: 25%;
-  display: flex;
-  justify-content: flex-start;
-  margin: 0.2rem 0 0;
-  padding: 0 0.3rem 0.25rem;
-}
-
-.searchForm label {
-  position: absolute;
-  left: -99999px;
-}
-
-.searchForm input[type='text'] {
-  flex-grow: 1;
-  max-width: 100%;
-  min-height: 25px;
-  font-size: 1rem;
-  padding: 0.2rem;
-  border-radius: 0.5rem;
-  outline: none;
-  padding-left: 0.7rem;
-  border: 2px solid #fe7f9c;
-  background-color: transparent;
-  color: #be2e6a;
-}
-
 .quote {
   margin: 0px 20px 0px 20px;
   padding: 0px;
@@ -172,13 +168,14 @@ body {
 
 /* auth forms */
 .auth-container {
-  float: right;
-  width: 75%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 form.signup,
 form.login {
-  width: 450px;
+  width: 350px;
   margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
@@ -251,8 +248,6 @@ div.error {
 .done-btn:hover {
   background-color: #e12b56;
 }
-
-
 
 .login-link,
 .signup-link {
@@ -349,11 +344,31 @@ div.error {
   font-weight: 400;
 }
 
-.sort-title {
-  font-size: 0.9rem;
-  color: rgb(102, 102, 102);
-  margin-right: 30px;
-  font-weight: 300;
+.searchForm {
+  width: 25%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0.2rem 0 0;
+  padding: 0 0.3rem 0.25rem;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.searchForm input[type='text'] {
+  flex-grow: 1;
+  max-width: 100%;
+  min-height: 25px;
+  font-size: 1rem;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  outline: none;
+  padding-left: 0.7rem;
+  border: 2px solid #fe7f9c;
+  background-color: transparent;
+  color: #be2e6a;
 }
 
 .addForm {
@@ -633,6 +648,21 @@ input[type=checkbox] {
   line-height: 1em;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .navbar-container {
+    width: 30%;
+  }
+
+  .react-calendar {
+    width: 275px;
+    max-width: 100%;
+  }
+
+  .auth-container {
+    width: 70%;
+  }
 }
 
 .react-calendar--doubleView {
@@ -1625,4 +1655,59 @@ input[type=checkbox] {
 .react-datepicker__portal .react-datepicker__current-month,
 .react-datepicker__portal .react-datepicker-time__header {
   font-size: 1.44rem;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar-container {
+    width: 100%;
+  }
+
+  /* .links {
+    align-items: flex-start;
+  }
+
+  .link {
+    width: 100%;
+  } */
+  .navbar-toggle-icon2 {
+    display: block;
+  }
+
+  .pages {
+    display: block;
+  }
+
+  .auth-container {
+    display: block;
+  }
+
+  .home-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .home-text {
+    font-size: 1rem;
+  }
+
+  .home-footer {
+    font-size: 0.8rem;
+  }
+
+  /* .auth-container {
+    margin-left: 10px;
+    margin-right: 10px;
+  } */
+
+  form.signup,
+  form.login {
+    width: 325px;
+  }
+
+  .quote {
+    display: none;
+  }
 }

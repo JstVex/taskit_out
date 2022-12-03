@@ -6,8 +6,9 @@ import Task from "../components/Task";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Finished = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Finished = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [finishedTasks, setFinishedTasks] = useState([])
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext()
@@ -60,6 +61,7 @@ const Finished = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleSt
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <HiOutlineSparkles className="title-icon1" />
                         <h4 className="title-heading">finished</h4>
                     </div>

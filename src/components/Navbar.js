@@ -3,10 +3,12 @@ import { BsSun, BsStar, BsHouseDoor } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
 import { HiOutlineSparkles } from "react-icons/hi"
 import Calendar from 'react-calendar';
-import { GiHollowCat } from "react-icons/gi"
+import { GiHollowCat } from "react-icons/gi";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
+import { useState } from "react";
 // import 'react-calendar/dist/Calendar.css';
 
-const Navbar = () => {
+const Navbar = ({ show, handleShow }) => {
     let activeStyle = {
         backgroundColor: "rgba(255, 182, 205, 0.5)",
         borderLeft: "3px solid #be2e6a",
@@ -14,8 +16,9 @@ const Navbar = () => {
     };
 
     return (
-        <header>
-            <div className="navbar-container">
+        <header >
+            <div className="navbar-container" style={show ? { display: 'block' } : { display: 'none' }}>
+                <MdOutlineCloseFullscreen className="navbar-toggle-icon2" onClick={handleShow} />
                 <div className="links">
                     <NavLink to="/tasks/inbox" className="link" style={({ isActive }) =>
                         isActive ? activeStyle : undefined

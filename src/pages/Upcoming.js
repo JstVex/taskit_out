@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineNextWeek } from 'react-icons/md'
 import { BiSortAlt2 } from "react-icons/bi"
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -6,12 +6,15 @@ import date from 'date-and-time'
 import DuedTask from "../components/DuedTask";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Upcoming = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Upcoming = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const todayDate = new Date();
     let formattedDate = date.format(todayDate, 'ddd MMM DD YYYY');
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
+
+    const [upcomimngTasks, setUpcomingTasks] = useState([])
 
     const fetchPlannedTasks = async () => {
         const response = await fetch(`${rootUrl}/api/tasks/planned`, {
@@ -20,7 +23,7 @@ const Upcoming = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleSt
         const json = await response.json();
 
         if (response.ok) {
-            setTasks(json);
+            setUpcomingTasks(json);
         }
     }
 
@@ -39,6 +42,7 @@ const Upcoming = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleSt
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <MdOutlineNextWeek className="title-icon1" />
                         <h4 className="title-heading">up coming</h4>
                     </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 
-const Navbartop = ({ search, setSearch }) => {
+const Navbartop = ({ show, handleShow }) => {
     const [quote, setQuote] = useState('');
 
     const { logout } = useLogout();
@@ -15,6 +15,13 @@ const Navbartop = ({ search, setSearch }) => {
     const handleClick = () => {
         logout()
     }
+
+    const handleLogoutAndShow = () => {
+        handleClick()
+        // handleShow()
+    }
+
+
 
     const fetchQuote = async () => {
         const response = await fetch("https://api.goprogram.ai/inspiration");
@@ -46,7 +53,7 @@ const Navbartop = ({ search, setSearch }) => {
                 {/* <BsSunFill className="topicon2" /> */}
                 {user && (
                     <div>
-                        <button onClick={handleClick} className="logout-btn">log out</button>
+                        <button onClick={handleLogoutAndShow} className="logout-btn">log out</button>
                     </div>
                 )}
                 {!user && (

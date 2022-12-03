@@ -5,8 +5,9 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import DuedTask from "../components/DuedTask";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Dued = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Dued = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
 
@@ -40,6 +41,7 @@ const Dued = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarre
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <CgCalendarDue className="title-icon1" />
                         <h4 className="title-heading">dued</h4>
                     </div>

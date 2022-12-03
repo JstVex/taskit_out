@@ -6,8 +6,9 @@ import AddMydayTask from "../components/AddMydayTask";
 import InfiniteScroll from "react-infinite-scroll-component";
 import date from 'date-and-time';
 import { useAuthContext } from "../hooks/useAuthContext";
+import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Myday = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Myday = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const todayDate = new Date();
     const [mydayTasks, setMydayTasks] = useState([])
 
@@ -40,6 +41,7 @@ const Myday = ({ tasks, setTasks, handleCheckTrue, handleCheckFalse, handleStarr
             <div className="tasks-container">
                 <div className="title">
                     <div className="iconandtext">
+                        <MdOutlineCloseFullscreen className="navbar-toggle-icon" onClick={handleShow} />
                         <BsSun className="title-icon1" />
                         <h4 className="title-heading">my day</h4>
                         <h4 className="date-date">{formattedDate}</h4>
