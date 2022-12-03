@@ -52,7 +52,7 @@ const Task = ({ task, show, handleCheckTrue, handleCheckFalse, handleStarredTrue
 
             </div>
             <div className="fortoggle" style={toggle ? { display: 'block', animationName: 'appear', animationDelay: '2s' } : null}>
-                <Edit task={task} handleDelete={handleDelete} noteRef={noteRef} handleShow={handleShow} />
+                <Edit task={task} show={show} handleDelete={handleDelete} noteRef={noteRef} handleShow={handleShow} />
             </div>
         </div>
     );

@@ -436,15 +436,12 @@ div.error {
   width: 68.5vw;
   box-shadow: 0px 3px 5px -4px;
   min-height: 20px;
-  padding: 18px;
+  padding: 18px 18px 18px 18px;
 }
 
 .task-details {
   margin-bottom: 1px;
 }
-
-
-
 
 input[type=checkbox] {
   accent-color: #b81313;
@@ -457,7 +454,6 @@ input[type=checkbox] {
 
 .star-icon {
   float: right;
-
 }
 
 .star-icon2 {
@@ -480,7 +476,6 @@ input[type=checkbox] {
 .edit-container {
   background-color: rgba(256, 256, 256, 0.8);
   border-radius: 5px;
-  margin: 5px 20px 5px 20px;
   padding: 18px;
   width: 68.5vw;
   box-shadow: 0px 3px 5px -4px;
@@ -490,20 +485,20 @@ input[type=checkbox] {
 
 .myday-button,
 .duedate-button {
+  width: 31.5vw;
   display: flex;
   align-items: center;
   justify-content: left;
   background-color: rgb(256, 256, 256);
   margin: 5px 10px 5px 10px;
   padding: 2.5px 10px 2.55px 10px;
-  /* width: 50%; */
 }
 
 .edit-text {
   margin-left: 15px;
   font-weight: lighter;
   margin-right: 30px;
-  width: 200px;
+  width: 250px;
 }
 
 /* .edit-text::selection {
@@ -566,6 +561,10 @@ input[type=checkbox] {
 
 .note-icon {
   margin-left: 10px;
+}
+
+.calender-icon {
+  font-size: 1.3rem;
 }
 
 .box5 {
@@ -1618,6 +1617,10 @@ input[type=checkbox] {
   line-height: 3rem;
 }
 
+.react-datepicker__input-container input {
+  width: 80%;
+}
+
 @media (max-width: 400px),
 (max-height: 550px) {
 
@@ -1633,6 +1636,11 @@ input[type=checkbox] {
 .react-datepicker__portal .react-datepicker-time__header {
   font-size: 1.44rem;
 }
+
+
+
+
+
 
 @media screen and (max-width: 600px) {
   .navbar-container {
@@ -1696,12 +1704,14 @@ input[type=checkbox] {
     width: 35%;
   }
 
+
+
 }
 
 @media screen and (min-width: 601px) and (max-width: 1000px) {
-  .navbar-container {
+  /* .navbar-container {
     width: 30%;
-  }
+  } */
 
   .react-calendar {
     width: 275px;
@@ -1712,7 +1722,34 @@ input[type=checkbox] {
     width: 70%;
   }
 
-  .task-layers {
+  /* .task-layers {
     width: 63vw;
   }
+
+  .edit-container {
+    width: 63vw;
+  } */
+}
+
+@media screen and (max-width: 748px) {
+  .duedate-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .calender-icon {
+    display: none;
+  }
+
+  .edit-text {
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size: 0.85rem;
+    width: 100px;
+  }
+
+  .sun-icon {
+    display: none;
+  }
+
 }

@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // import "react-datepicker/dist/react-datepicker.css";
 
-const Edit = forwardRef(({ task, handleDelete, handleShow }, noteRef) => {
+const Edit = forwardRef(({ task, show, handleDelete, handleShow }, noteRef) => {
     const [startDate, setStartDate] = useState(new Date());
     const [note, setNote] = useState(task.note);
     const [error, setError] = useState(null);
@@ -166,17 +166,17 @@ const Edit = forwardRef(({ task, handleDelete, handleShow }, noteRef) => {
 
 
     return (
-        <div className="edit-container" >
+        <div className="edit-container" style={show ? null : { width: '80vw' }}>
             <div className="myday-button box1" onClick={task.extra ? (e) => removeMyday(e, task._id) : (e) => handleMydaySubmit(e, task._id)}>
-                <BsSun />
+                <BsSun className="sun-icon" />
                 {task.extra ? <p className="edit-text">remove from my day</p> : <p className="edit-text">add to my day ^^</p>}
 
             </div>
             <div className="duedate-button box2">
                 {/* onClick={task.planned ? (e) => removeDate(e, task._id) : (e) => addDate(e, task._id)} */}
-                <SlCalender />
+                <SlCalender className="calender-icon" />
                 {task.planned ? <p className="edit-text" onClick={(e) => removeDate(e, task._id)}>remove due date</p> : <p className="edit-text" onClick={(e) => addDate(e, task._id)}>add due date ^^</p>}
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
             {/* <div className="note-space box3">
                 <form className="noteform" onSubmit={(e) => handleNoteSubmit(e, task._id)}>
