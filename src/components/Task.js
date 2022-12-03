@@ -6,7 +6,7 @@ import { CiStickyNote } from "react-icons/ci"
 import { SlCalender } from "react-icons/sl";
 import { Link } from "react-router-dom";
 
-const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Task = ({ task, show, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [toggle, setToggle] = useState(false);
     const handleShow = () => {
         setToggle(!toggle)
@@ -24,8 +24,8 @@ const Task = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, hand
 
 
     return (
-        <div className="taskdetails-container">
-            <div className="task-layers">
+        <div className="taskdetails-container" >
+            <div className="task-layers" style={show ? null : { width: '80vw' }}>
                 <div className="task-details">
                     <input
                         type="checkbox"
