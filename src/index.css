@@ -281,6 +281,11 @@ div.error {
   display: none;
 }
 
+.home {
+  margin-left: 20px;
+  height: 91vh;
+  overflow: auto;
+}
 
 .home-container {
   display: flex;
