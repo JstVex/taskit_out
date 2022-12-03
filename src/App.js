@@ -19,20 +19,15 @@ function App() {
   const rootUrl = process.env.REACT_APP_API_BASE_URL;
   const [tasks, setTasks] = useState([]);
   const [search, setSearch] = useState('');
-  const [isStarred, setIsStarred] = useState(false);
   const [error, setError] = useState(null);
 
   const [show, setShow] = useState(false);
 
-  // const [appear, setAppear] = useState(true);
 
   const handleShow = () => {
     setShow(!show)
   }
 
-  // const handleAppear = () => {
-  //   setAppear(!appear)
-  // }
 
   const { user } = useAuthContext();
 
@@ -209,42 +204,42 @@ function App() {
               </Route>
               <Route
                 path='/tasks/inbox'
-                element={user ? <Tasks tasks={tasks.filter(task => ((task.task).toLowerCase()).includes(search.toLowerCase()))} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} search={search} setSearch={setSearch} /> : <Navigate to='/login' />}
+                element={user ? <Tasks tasks={tasks.filter(task => ((task.task).toLowerCase()).includes(search.toLowerCase()))} setTasks={setTasks} show={show} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} search={search} setSearch={setSearch} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/myday'
-                element={user ? <Myday tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Myday tasks={tasks} setTasks={setTasks} show={show} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/important'
-                element={user ? <Important tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Important tasks={tasks} setTasks={setTasks} show={show} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/planned'
-                element={user ? <Planned tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Planned tasks={tasks} setTasks={setTasks} show={show} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/finished'
-                element={user ? <Finished tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Finished tasks={tasks} setTasks={setTasks} show={show} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/dued'
-                element={user ? <Dued tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Dued tasks={tasks} setTasks={setTasks} setShow={setShow} show={show} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path='/tasks/upcoming'
-                element={user ? <Upcoming tasks={tasks} setTasks={setTasks} setShow={setShow} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
+                element={user ? <Upcoming tasks={tasks} setTasks={setTasks} setShow={setShow} show={show} handleShow={handleShow} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} /> : <Navigate to='/login' />}
               >
               </Route>
               <Route
                 path="/login"
-                element={!user ? <Login /> : <Navigate to='/' />}
+                element={!user ? <Login setShow={setShow} /> : <Navigate to='/' />}
               />
               <Route
                 path="/signup"

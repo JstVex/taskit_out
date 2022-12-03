@@ -35,10 +35,7 @@ body {
 }
 
 .navbar-toggle-icon3 {
-  /* float: right;
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: 30px; */
+  margin: 20px;
   font-size: 1.3rem;
   color: #a72f51;
   cursor: pointer;
@@ -276,9 +273,14 @@ div.error {
 /* tasks */
 .tasks-container {
   margin-left: 20px;
-  height: 90vh;
-  overflow: 'auto';
+  height: 91vh;
+  overflow: auto;
 }
+
+.tasks-container::-webkit-scrollbar {
+  display: none;
+}
+
 
 .home-container {
   display: flex;
@@ -286,7 +288,7 @@ div.error {
   align-items: center;
   justify-content: center;
   color: #000;
-  height: 90vh;
+  height: 82vh;
   line-height: 30%;
 }
 
@@ -371,18 +373,18 @@ div.error {
   color: #be2e6a;
 }
 
+.addform-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .addForm {
-  /* width: 75%;
-  /* display: flex;
-  justify-content: flex-start; */
-  /* margin: 0.5rem 0 0;
-  padding: 0 0.5rem 0.25rem;
-  border-bottom: 1px solid #eee; */
   background-color: #fff;
   border-radius: 5px;
   margin: 10px 20px 10px 20px;
   padding: 18px;
-  width: 70vw;
+  width: 80vw;
   box-shadow: 0px 3px 5px -4px;
 }
 
@@ -392,7 +394,7 @@ div.error {
   outline: none;
   border: none;
   margin-left: 8px;
-  width: 90%;
+  width: 80%;
 }
 
 .addForm label {
@@ -412,29 +414,25 @@ div.error {
   padding: 0px 2px 0px 2px;
 }
 
-.addform-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .plus {
   font-size: 1rem;
   margin-top: 0px;
 }
 
-/* .addbutton:focus,
-.addbutton:hover {
-  color: white;
-  background-color: limegreen;
-  outline: none;
-} */
-
 /* task */
+.taskdetails-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
 .task-layers {
   background-color: rgba(256, 256, 256, 0.8);
   border-radius: 5px;
-  margin: 5px 25px 5px 20px;
+  margin: 5px 20px 5px 20px;
   width: 68.5vw;
   box-shadow: 0px 3px 5px -4px;
   min-height: 20px;
@@ -442,17 +440,11 @@ div.error {
 }
 
 .task-details {
-  margin: 0px;
   margin-bottom: 1px;
-  padding: 0px;
 }
 
-.taskdetails-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
+
 
 input[type=checkbox] {
   accent-color: #b81313;
@@ -648,21 +640,6 @@ input[type=checkbox] {
   line-height: 1em;
   margin-left: auto;
   margin-right: auto;
-}
-
-@media screen and (min-width: 601px) and (max-width: 1000px) {
-  .navbar-container {
-    width: 30%;
-  }
-
-  .react-calendar {
-    width: 275px;
-    max-width: 100%;
-  }
-
-  .auth-container {
-    width: 70%;
-  }
 }
 
 .react-calendar--doubleView {
@@ -1709,5 +1686,33 @@ input[type=checkbox] {
 
   .quote {
     display: none;
+  }
+
+  .addForm {
+    margin: 10px 8px 10px 8px;
+  }
+
+  .searchForm {
+    width: 35%;
+  }
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 1000px) {
+  .navbar-container {
+    width: 30%;
+  }
+
+  .react-calendar {
+    width: 275px;
+    max-width: 100%;
+  }
+
+  .auth-container {
+    width: 70%;
+  }
+
+  .task-layers {
+    width: 63vw;
   }
 }

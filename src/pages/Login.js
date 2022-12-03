@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLogin } from "../hooks/useLogin"
 
-const Login = () => {
+const Login = ({ setShow }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { login, error, isLoading } = useLogin()
@@ -11,6 +11,10 @@ const Login = () => {
 
         await login(email, password)
     }
+
+    useEffect(() => {
+        setShow(false)
+    })
 
     return (
         <div className="auth-container">

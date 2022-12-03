@@ -8,7 +8,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { MdOutlineCloseFullscreen } from "react-icons/md"
 
 
-const Important = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Important = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
     const [importantTasks, setImportantTasks] = useState([])
@@ -50,7 +50,7 @@ const Important = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handl
                 </div>
                 <AddStarredTask />
                 {importantTasks && importantTasks.map((task) => {
-                    return <Task task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
+                    return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}
             </div>
         </InfiniteScroll >

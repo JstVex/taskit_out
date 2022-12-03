@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Planned = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Planned = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [plannedTasks, setPlannedTasks] = useState([])
     const todayDate = new Date();
     let formattedDate = date.format(todayDate, 'ddd MMM DD YYYY');
@@ -63,7 +63,7 @@ const Planned = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleS
                     </div> */}
                 </div>
                 {plannedTasks && plannedTasks.map((task) => {
-                    return <Task task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
+                    return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}
             </div>
         </InfiniteScroll >

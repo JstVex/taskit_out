@@ -8,7 +8,7 @@ import date from 'date-and-time';
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Myday = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Myday = ({ tasks, handleShow, show, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const todayDate = new Date();
     const [mydayTasks, setMydayTasks] = useState([])
 
@@ -53,7 +53,7 @@ const Myday = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleSta
                 </div>
                 <AddMydayTask />
                 {mydayTasks && mydayTasks.map((task) => {
-                    return <Task task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
+                    return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}
             </div>
         </InfiniteScroll >

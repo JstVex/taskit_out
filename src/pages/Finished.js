@@ -8,7 +8,7 @@ import { HiOutlineSparkles } from "react-icons/hi";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdOutlineCloseFullscreen } from "react-icons/md"
 
-const Finished = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
+const Finished = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [finishedTasks, setFinishedTasks] = useState([])
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext()
@@ -76,7 +76,7 @@ const Finished = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handle
                 </div>
                 {/* <AddStarredTask fetchTasks={fetchTasks} /> */}
                 {finishedTasks && finishedTasks.map((task) => {
-                    return <Task task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
+                    return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}
             </div>
         </InfiniteScroll >
