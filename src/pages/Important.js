@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsStar } from "react-icons/bs"
-// import { BiSortAlt2 } from "react-icons/bi"
+import { BsStar } from "react-icons/bs";
 import Task from "../components/Task";
 import AddStarredTask from "../components/AddStarredTask";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -43,10 +42,6 @@ const Important = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse,
                         <BsStar className="title-icon1" />
                         <h4 className="title-heading">important</h4>
                     </div>
-                    {/* <div className="iconandtext">
-                        <BiSortAlt2 className="title-icon2" />
-                        <h4 className="sort-title">Sort</h4>
-                    </div> */}
                 </div>
                 <AddStarredTask />
                 {importantTasks && importantTasks.map((task) => {

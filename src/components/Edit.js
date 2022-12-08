@@ -2,7 +2,7 @@ import { BsSun, BsTrash } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
 import { forwardRef, useState, useRef, useImperativeHandle } from "react";
 import DatePicker from "react-datepicker";
-import date from 'date-and-time';
+// import date from 'date-and-time';
 import { useAuthContext } from "../hooks/useAuthContext";
 
 // import "react-datepicker/dist/react-datepicker.css";
@@ -164,7 +164,6 @@ const Edit = forwardRef(({ task, show, handleDelete, handleShow }, noteRef) => {
         }
     }
 
-
     return (
         <div className="edit-container" style={show ? null : { width: '80vw' }}>
             <div className="myday-button box1" onClick={task.extra ? (e) => removeMyday(e, task._id) : (e) => handleMydaySubmit(e, task._id)}>
@@ -173,25 +172,11 @@ const Edit = forwardRef(({ task, show, handleDelete, handleShow }, noteRef) => {
 
             </div>
             <div className="duedate-button box2">
-                {/* onClick={task.planned ? (e) => removeDate(e, task._id) : (e) => addDate(e, task._id)} */}
                 <SlCalender className="calender-icon" />
                 {task.planned ? <p className="edit-text" onClick={(e) => removeDate(e, task._id)}>remove due date</p> : <p className="edit-text" onClick={(e) => addDate(e, task._id)}>add due date ^^</p>}
                 <DatePicker dateFormat="dd/MM/yyyy" selected={startDate} onChange={(date) => setStartDate(date)} />
             </div>
-            {/* <div className="note-space box3">
-                <form className="noteform" onSubmit={(e) => handleNoteSubmit(e, task._id)}>
-                    <label htmlFor="addNote">Add note</label>
-                    <input
-                        autoFocus
-                        id="addNote"
-                        type="text"
-                        placeholder="note note here ^^"
-                        required
-                        value={note}
-                        onChange={(e) => setNote(e.target.value)}
-                    />
-                </form>
-            </div> */}
+
             <div className="note-space box3" >
                 <div className="noteform" onChange={(e) => handleNoteChange(e, task._id)}>
                     <label htmlFor="addNote">Add note</label>
@@ -209,6 +194,7 @@ const Edit = forwardRef(({ task, show, handleDelete, handleShow }, noteRef) => {
                     />
                 </div>
             </div>
+
             <div className="task-space box4">
                 <form className="taskform" onSubmit={(e) => updateTaskSubmit(e, task._id)}>
                     <label htmlFor="addWord">update task</label>

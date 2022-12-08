@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Myday from './pages/Myday';
@@ -13,7 +13,6 @@ import Upcoming from './pages/Upcoming';
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { useAuthContext } from "./hooks/useAuthContext"
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const rootUrl = process.env.REACT_APP_API_BASE_URL;
@@ -23,11 +22,9 @@ function App() {
 
   const [show, setShow] = useState(false);
 
-
   const handleShow = () => {
     setShow(!show)
   }
-
 
   const { user } = useAuthContext();
 
@@ -37,7 +34,6 @@ function App() {
     }
 
     const listTasks = tasks.map((task) => task._id === id ? { ...task, checked: !task.checked } : task);
-    // setAndSaveTasks(listTasks)
 
     const response = await fetch(`${rootUrl}/api/tasks/${id}`, {
       method: 'PATCH',
@@ -57,7 +53,6 @@ function App() {
     if (response.ok) {
       setTasks(listTasks);
       setError(null);
-      console.log('edited the task', json)
     }
   }
 
@@ -67,7 +62,6 @@ function App() {
     }
 
     const listTasks = tasks.map((task) => task._id === id ? { ...task, checked: !task.checked } : task);
-    // setAndSaveTasks(listTasks)
 
     const response = await fetch(`${rootUrl}/api/tasks/${id}`, {
       method: 'PATCH',
@@ -87,7 +81,6 @@ function App() {
     if (response.ok) {
       setTasks(listTasks);
       setError(null);
-      console.log('edited the task', json)
     }
   }
 
@@ -116,7 +109,6 @@ function App() {
     if (response.ok) {
       setTasks(listTasks);
       setError(null);
-      console.log('edited the task', json)
     }
   }
 
@@ -126,7 +118,6 @@ function App() {
     }
 
     const listTasks = tasks.map((task) => task._id === id ? { ...task, starred: !task.starred } : task);
-    // setAndSaveTasks(listTasks)
 
     const response = await fetch(`${rootUrl}/api/tasks/${id}`, {
       method: 'PATCH',
@@ -170,29 +161,13 @@ function App() {
 
     if (response.ok) {
       setTasks(listTasks);
-      console.log('deleted the task', json)
     }
   }
-
-  // const fetchTasks = async () => {
-  //   const response = await fetch(`${rootUrl}/api/tasks`);
-  //   const json = await response.json();
-
-  //   if (response.ok) {
-  //     setTasks(json);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchTasks()
-  // }, [fetchTasks])
-
-
 
   return (
     <div className="container">
       <BrowserRouter>
-        <Navbartop show={show} handleShow={handleShow} />
+        <Navbartop />
         <div className="seperator">
           <Navbar show={show} handleShow={handleShow} />
           <div className="pages">

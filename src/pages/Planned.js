@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
 import { SlCalender } from "react-icons/sl";
-// import { BiSortAlt2 } from "react-icons/bi"
 import InfiniteScroll from "react-infinite-scroll-component";
-import date from 'date-and-time'
+// import date from 'date-and-time';
 import Task from "../components/Task";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { MdOutlineCloseFullscreen } from "react-icons/md"
 
 const Planned = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
     const [plannedTasks, setPlannedTasks] = useState([])
-    const todayDate = new Date();
-    let formattedDate = date.format(todayDate, 'ddd MMM DD YYYY');
+    // const todayDate = new Date();
+    // let formattedDate = date.format(todayDate, 'ddd MMM DD YYYY');
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
-
 
     const fetchPlannedTasks = async () => {
         const response = await fetch(`${rootUrl}/api/tasks/planned`, {

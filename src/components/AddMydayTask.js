@@ -12,7 +12,6 @@ const AddMydayTask = () => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
     const { user } = useAuthContext();
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const tasky = { task, checked, starred, note, extra }

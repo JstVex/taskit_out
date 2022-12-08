@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { CgCalendarDue } from 'react-icons/cg'
-import { BiSortAlt2 } from "react-icons/bi"
+import { CgCalendarDue } from 'react-icons/cg';
 import InfiniteScroll from "react-infinite-scroll-component";
 import DuedTask from "../components/DuedTask";
 import { Link } from "react-router-dom";
@@ -23,8 +22,6 @@ const Dued = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStar
             setDuedTasks(json);
         }
     }
-
-
 
     useEffect(() => {
         if (user) {
@@ -50,10 +47,6 @@ const Dued = ({ tasks, handleShow, handleCheckTrue, handleCheckFalse, handleStar
                             <h4 className="link-for-planned">up coming</h4>
                         </div>
                     </Link>
-                    <div className="iconandtext">
-                        <BiSortAlt2 className="title-icon2" />
-                        <h4 className="sort-title">Sort</h4>
-                    </div>
                 </div>
                 {duedTasks && duedTasks.map((task) => {
                     return <DuedTask task={task} key={task._id} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />

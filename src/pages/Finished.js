@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import { BsStar } from "react-icons/bs"
-// import { BiSortAlt2 } from "react-icons/bi"
 import Task from "../components/Task";
-// import AddStarredTask from "../components/AddTask";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -37,10 +34,6 @@ const Finished = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, 
         })
         const json = await response.json()
 
-        // if (!response.ok) {
-        //     setError(json.error)
-        // }
-
         if (response.ok) {
             console.log('deleted all the tasks', json)
         }
@@ -68,13 +61,10 @@ const Finished = ({ tasks, show, handleShow, handleCheckTrue, handleCheckFalse, 
                     <button className="all-delete-button" onClick={() => handleDeleteAllFinished()}>
                         <p>delete all</p>
                     </button>
-                    {/* <div className="iconandtext">
-                        <BiSortAlt2 className="title-icon2" />
-                        <h4 className="sort-title">Sort</h4>
+                    {/* <div className="count">
+
                     </div> */}
-                    <div className="count"></div>
                 </div>
-                {/* <AddStarredTask fetchTasks={fetchTasks} /> */}
                 {finishedTasks && finishedTasks.map((task) => {
                     return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}

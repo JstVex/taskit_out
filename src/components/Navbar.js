@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { BsSun, BsStar, BsHouseDoor } from "react-icons/bs"
+import { BsSun, BsStar } from "react-icons/bs"
 import { SlCalender } from "react-icons/sl";
 import { HiOutlineSparkles } from "react-icons/hi"
 import Calendar from 'react-calendar';
 import { GiHollowCat } from "react-icons/gi";
-import { MdOutlineCloseFullscreen } from "react-icons/md"
-import { useState } from "react";
+import { MdOutlineCloseFullscreen } from "react-icons/md";
 // import 'react-calendar/dist/Calendar.css';
 
 const Navbar = ({ show, handleShow }) => {

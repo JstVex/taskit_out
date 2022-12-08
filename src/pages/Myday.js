@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BsSun } from "react-icons/bs"
-// import { BiSortAlt2 } from "react-icons/bi"
 import Task from "../components/Task";
 import AddMydayTask from "../components/AddMydayTask";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -32,6 +31,7 @@ const Myday = ({ tasks, handleShow, show, handleCheckTrue, handleCheckFalse, han
             fetchMydayTasks()
         }
     }, [fetchMydayTasks, user])
+
     return (
         <InfiniteScroll
             dataLength={tasks}
@@ -46,12 +46,10 @@ const Myday = ({ tasks, handleShow, show, handleCheckTrue, handleCheckFalse, han
                         <h4 className="title-heading">my day</h4>
                         <h4 className="date-date">{formattedDate}</h4>
                     </div>
-                    {/* <div className="iconandtext">
-                        <BiSortAlt2 className="title-icon2" />
-                        <h4 className="sort-title">Sort</h4>
-                    </div> */}
                 </div>
+
                 <AddMydayTask />
+
                 {mydayTasks && mydayTasks.map((task) => {
                     return <Task task={task} key={task._id} show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
                 })}

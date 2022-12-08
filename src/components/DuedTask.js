@@ -2,18 +2,18 @@ import { useState } from "react";
 import { BsStar, BsStarFill, BsSun } from "react-icons/bs";
 import { GrEdit } from "react-icons/gr";
 import Edit from "./Edit";
-import date from 'date-and-time'
+// import date from 'date-and-time'
 import { CiStickyNote } from "react-icons/ci"
 import { SlCalender } from "react-icons/sl";
 
 const DuedTask = ({ task, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete }) => {
-    const todayDate = new Date();
-    let formattedTodayDate = date.format(todayDate, 'DD-MM-YYYY');
+    // const todayDate = new Date();
+    // let formattedTodayDate = date.format(todayDate, 'DD-MM-YYYY');
     // let formattedPlannedDate = date.parse(task.planned, 'ddd, MMM DD YYYY');
     // console.log(formattedTodayDate)
     // console.log(formattedPlannedDate)
-    const getTodayDate = parseInt(formattedTodayDate.substring(0, 2));
-    const getDate = parseInt(task.planned.substring(10, 8));
+    // const getTodayDate = parseInt(formattedTodayDate.substring(0, 2));
+    // const getDate = parseInt(task.planned.substring(10, 8));
     // console.log(getDate)
     // console.log(getTodayDate)
     const [toggle, setToggle] = useState(false)
