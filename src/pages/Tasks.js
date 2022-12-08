@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-// import { BiSortAlt2 } from "react-icons/bi"
+import { useEffect, useState } from "react";
 import { GiHollowCat } from "react-icons/gi"
 import Task from "../components/Task";
 import AddTask from "../components/AddTask";
@@ -11,6 +10,9 @@ import { MdOutlineCloseFullscreen } from "react-icons/md"
 
 const Tasks = ({ tasks, setTasks, show, handleShow, handleCheckTrue, handleCheckFalse, handleStarredTrue, handleStarredFalse, handleDelete, search, setSearch }) => {
     const rootUrl = process.env.REACT_APP_API_BASE_URL;
+
+    const [count, setCount] = useState(0)
+
     const { user } = useAuthContext();
 
     const fetchTasks = async () => {
@@ -24,11 +26,25 @@ const Tasks = ({ tasks, setTasks, show, handleShow, handleCheckTrue, handleCheck
         }
     }
 
+    const fetchCountTasks = async () => {
+        const response = await fetch(`${rootUrl}/api/tasks/counttasks`, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+        const json = await response.json();
+
+        if (response.ok) {
+            setCount(json);
+        }
+    }
+
     useEffect(() => {
         if (user) {
-            fetchTasks()
+            fetchTasks();
+            fetchCountTasks()
         }
-    }, [fetchTasks, user])
+    }, [fetchTasks, fetchCountTasks, user])
 
     return (
         <InfiniteScroll
@@ -44,15 +60,14 @@ const Tasks = ({ tasks, setTasks, show, handleShow, handleCheckTrue, handleCheck
                         <h4 className="title-heading">tasks</h4>
                     </div>
                     <SearchTask search={search} setSearch={setSearch} />
-                    {/* <div className="iconandtext">
-                        <BiSortAlt2 className="title-icon2" />
-                        <h4 className="sort-title">Sort</h4>
-                    </div> */}
-                    <div className="count">
 
+                    <div className="count">
+                        <p>tasks count: {count}</p>
                     </div>
                 </div>
+
                 <AddTask />
+
                 {tasks && tasks.map((task) => {
                     return <Task task={task} key={task._id}
                         show={show} handleCheckTrue={handleCheckTrue} handleCheckFalse={handleCheckFalse} handleStarredTrue={handleStarredTrue} handleStarredFalse={handleStarredFalse} handleDelete={handleDelete} />
